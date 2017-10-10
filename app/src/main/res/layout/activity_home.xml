@@ -22,7 +22,7 @@
             android:id="@+id/tv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I'm your Mobile Guardian"
+            android:text="I am your Mobile Guardian"
             android:textColor="#90000000"
             android:textScaleX="1.1"
             android:textSize="16sp"
