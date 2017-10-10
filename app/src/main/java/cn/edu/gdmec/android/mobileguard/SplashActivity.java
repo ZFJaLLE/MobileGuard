@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         mVersion = MyUtils.getVersion(getApplicationContext());
-        mTvVersion = (TextView) findViewById(R.id.all);
+        mTvVersion = (TextView) findViewById(R.id.tv_splash_version);
         mTvVersion.setText("版本号："+mVersion);
         final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SplashActivity.this);
         new Thread(){
