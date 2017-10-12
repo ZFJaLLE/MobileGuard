@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class LostFindActivity extends AppCompatActivity {
+public class BasicSetUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lost_find);
+        setContentView(R.layout.activity_basic_set_up);
     }
 }

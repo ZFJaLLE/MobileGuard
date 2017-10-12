@@ -1,8 +1,15 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard;
 
-/**
- * Created by Personal on 2017/10/12.
- */
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class Setup2Activity {
+import cn.edu.gdmec.android.mobileguard.R;
+
+public class Setup2Activity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setup2);
+    }
 }
