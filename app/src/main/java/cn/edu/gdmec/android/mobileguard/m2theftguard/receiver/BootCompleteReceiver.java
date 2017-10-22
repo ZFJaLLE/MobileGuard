@@ -13,3 +13,4 @@ public class BootCompleteReceiver extends BroadcastReceiver {
         ((App)(context.getApplicationContext())).correctSIM();
     }
 }
+
