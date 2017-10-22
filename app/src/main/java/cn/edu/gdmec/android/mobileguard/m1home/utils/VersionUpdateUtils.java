@@ -85,13 +85,13 @@ public class VersionUpdateUtils {
                 if(!mVersion.equals(versionEntity.versionCode)){
                     //版本不同，需要升级
                     handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
-                    }
                 }
-            }catch (IOException e){
-                handler.sendEmptyMessage(MESSAGE_IO_ERROR);
-                e.printStackTrace();
-            }catch (JSONException e){
-                handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
+            }
+        }catch (IOException e){
+            handler.sendEmptyMessage(MESSAGE_IO_ERROR);
+            e.printStackTrace();
+        }catch (JSONException e){
+            handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
             e.printStackTrace();
         }
     }
