@@ -98,7 +98,7 @@ public class VersionUpdateUtils {
 
     private void showUpdateDialog(final VersionEntity versionEntity){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("检查到有新版本："+versionEntity.versionCode);
+        /*builder.setTitle("检查到有新版本："+versionEntity.versionCode);
         builder.setMessage(versionEntity.description);
         builder.setCancelable(false);
         builder.setIcon(R.mipmap.ic_launcher_round);
@@ -110,9 +110,10 @@ public class VersionUpdateUtils {
         builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialogInterface,int i){
                 dialogInterface.dismiss();
-                enterHome();
+
             }
-        });
+        });*/
+        enterHome();
         builder.show();
     }
 
