@@ -25,6 +25,7 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_lost_find);
         msharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
         if(!isSetup()){
+            //如果没有设置向导，则进入
             startSetUp1Activity();
         }
         initView();
@@ -33,7 +34,7 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
     private boolean isSetup(){
         return msharedPreferences.getBoolean("isSetUp", false);
     }
-
+    /**初始化控件*/
     private void initView(){
         TextView mTitleTV = (TextView) findViewById(R.id.tv_title);
         mTitleTV.setText("手机防盗");
@@ -81,9 +82,11 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_inter_setup_wizard:
+                //重新进入设置向导
                 startSetUp1Activity();;
                 break;
             case R.id.imgv_leftbtn:
+                //重新植入设置向导
                 finish();;
                 break;
         }
