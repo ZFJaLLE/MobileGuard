@@ -48,7 +48,7 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
         mInterSetupRL = (RelativeLayout) findViewById(R.id.rl_inter_setup_wizard);
         mInterSetupRL.setOnClickListener(this);
         mProtectStatusTV = (TextView) findViewById(R.id.tv_lostfind_protectstauts);
-        //查询手机防盗是否开启，默认为开启
+        //查询手机防盗是否开启，默认为开启！
         boolean protecting = msharedPreferences.getBoolean("protecting", true);
         if(protecting){
             mProtectStatusTV.setText("防盗保护已经开启");
