@@ -127,7 +127,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
                 finish();
                 break;
             case R.id.btn_addblacknumber:
-                //跳转至添加黑名单页面
+                //跳转至添加黑名单页面......
                 startActivity(new Intent(this, AddBlackNumberActivity.class));
                 break;
         }
