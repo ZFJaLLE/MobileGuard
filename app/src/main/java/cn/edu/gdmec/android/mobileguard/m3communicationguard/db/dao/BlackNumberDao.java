@@ -60,7 +60,7 @@ public class BlackNumberDao {
         int rownumber = db.delete("blacknumber", "number=?",
                 new String[] { blackContactInfo.phoneNumber});
         if (rownumber == 0){
-            return false;  //删除数据不成功
+            return false;  //删除数据不成功！
         }else{
             return true;
         }
