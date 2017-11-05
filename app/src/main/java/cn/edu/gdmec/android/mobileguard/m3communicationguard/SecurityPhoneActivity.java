@@ -38,11 +38,11 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
         dao = new BlackNumberDao(SecurityPhoneActivity.this);
         totalNumber = dao.getTotalNumber();
         if(totalNumber == 0){
-            //数据库中没有黑名单数据
+            // 数据库中没有黑名单数据！
             mHaveBlackNumber.setVisibility(View.GONE);
             mNoBlackNumber.setVisibility(View.VISIBLE);
         }else if (totalNumber > 0){
-            //数据库中含有黑名单数据
+            // 数据库中含有黑名单数据！
             mHaveBlackNumber.setVisibility(View.VISIBLE);
             mNoBlackNumber.setVisibility(View.GONE);
             pagenumber = 0;
