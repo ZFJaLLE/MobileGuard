@@ -69,8 +69,7 @@ public class BlackNumberDao {
     /*
     分页查询数据库的记录
     @param pagenumber,第几页页码 从第0页开始
-    @param pagesize
-            每一个页面的大小
+    @param pagesize   每一个页面的大小
      */
     public List<BlackContactInfo> getPageBlackNumber(int pagenumber,
                                                      int pagesize){
