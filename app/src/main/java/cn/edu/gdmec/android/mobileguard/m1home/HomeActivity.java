@@ -16,10 +16,12 @@ import android.widget.Toast;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.Setup1Activity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetupPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReceiver;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5utils;
+import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -46,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
                         }else {
                             showSetUpPswDialog();
                         }
+                        break;
+                    case 1:
+                        startActivity(SecurityPhoneActivity.class);
                         break;
                 }
             }
