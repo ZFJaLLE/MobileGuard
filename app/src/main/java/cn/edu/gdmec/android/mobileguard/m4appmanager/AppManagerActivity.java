@@ -26,9 +26,9 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 
 public class AppManagerActivity extends AppCompatActivity implements View.OnClickListener{
-    /** 手机剩余内存TextView */
+    /** 手机剩余内存TextView  */
     private TextView mPhoneMemoryTV;
-    /** 展示SD卡剩余内存TextView */
+    /** 展示SD卡剩余内存TextView  */
     private TextView mSDMemoryTV;
     private ListView mListView;
     private List<AppInfo> appInfos;
@@ -153,7 +153,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void run() {
                             AppInfo mappInfo = (AppInfo) adapter.getItem(position);
-                            //记住当前条目的状态
+                            //记住当前条目的状态；
                             boolean flag = mappInfo.isSelected;
                             //先将集合中所有条目的AppInfo变为位选中状态
                             for (AppInfo appInfo:userAppInfos){
