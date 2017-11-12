@@ -24,7 +24,7 @@ public class ContactAdapter extends BaseAdapter {
         this.contactInfos = contactInfos;
         this.context = context;
     }
-
+    //重写方法
     @Override
     public int getCount() {
         return contactInfos.size();
