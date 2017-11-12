@@ -75,7 +75,7 @@ public class AppManagerAdapter extends BaseAdapter{
         AppInfo appInfo;
         if(i<(UserAppInfos.size() + 1)){
             appInfo = UserAppInfos.get(i-1);
-        }else{t
+        }else{
             appInfo = SystemAppInfos.get(i - UserAppInfos.size() - 2);
         }
         ViewHolder viewHolder =null;
@@ -83,7 +83,7 @@ public class AppManagerAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) view.getTag();
         }else {
             viewHolder = new ViewHolder();
-            view = View.inflate(context, R.layout.item_appmanager_lis,null);
+            view = View.inflate(context, R.layout.item_appmanager_list,null);
             viewHolder.mAppIconImgv = (ImageView) view
                     .findViewById(R.id.imgv_appicon);
             viewHolder.mAppLocationTV = (TextView) view
