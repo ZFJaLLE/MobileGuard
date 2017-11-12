@@ -8,7 +8,7 @@ import android.content.Context;
 
 public class DensityUtil {
     /**
-     * dip转换像素px;
+     * dip转换像素px
      */
 
     public static int dip2px(Context context, float dpValue){
