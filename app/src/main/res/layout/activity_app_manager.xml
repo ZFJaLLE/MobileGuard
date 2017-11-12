@@ -3,8 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-  >
+    android:orientation="vertical">
     <include layout="@layout/titlebar"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,17 +14,16 @@
             style="@style/textview12sp"
             android:layout_alignParentRight="true" />
         <TextView
-            android:id="@+id/tv_sdeemory_appmanager"
+            android:id="@+id/tv_sdmemory_appmanager"
             style="@style/textview12sp"
             android:layout_alignParentRight="true" />
 
     </RelativeLayout>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <ListView
             android:id="@+id/lv_appmanager"
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:listSelector="@color/transparent"/>
