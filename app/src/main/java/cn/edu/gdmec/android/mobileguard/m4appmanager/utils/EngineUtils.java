@@ -59,9 +59,9 @@ public class EngineUtils {
         builder.setTitle(appInfo.appName);
         builder.setMessage(
                 "Version:"+"\n"+appInfo.appVersion+"\n\n"+
-                        "Install time:"+"\n"+appInfo.inStalldate+"\n\n"+
+                       "Install time:"+"\n"+appInfo.inStalldate+"\n\n"+
                         "Certificate issuer:"+"\n"+appInfo.certMsg+"\n\n"+
-                        "Permission:"+"\n"+appInfo.Permissions
+                       "Permission:"+"\n"+appInfo.Permissions
         );
         builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
             @Override
@@ -73,6 +73,5 @@ public class EngineUtils {
     }
     //end
 }
-
 
 

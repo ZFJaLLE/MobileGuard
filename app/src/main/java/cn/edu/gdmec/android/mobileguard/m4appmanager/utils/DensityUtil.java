@@ -1,9 +1,10 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
+
 import android.content.Context;
 
 /**
- * Created by 郭钦锋 on 2017/11/7.
+ * Created by Administrator on 2017/11/7.
  */
 
 

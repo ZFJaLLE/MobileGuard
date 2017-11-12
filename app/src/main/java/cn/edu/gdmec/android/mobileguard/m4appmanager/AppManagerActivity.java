@@ -1,5 +1,4 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -148,7 +147,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
                             }
                             for (AppInfo appInfo : systemAppInfos) {
                                 appInfo.isSelected = false;
-                             }
+                            }
                             if (mappInfo !=null) {
                                 if (flag) {
                                     mappInfo.isSelected = false;

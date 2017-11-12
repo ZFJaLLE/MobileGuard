@@ -1,4 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.adapter;
+
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.text.format.Formatter;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
-
 
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
@@ -75,7 +75,7 @@ public class AppManagerAdapter extends BaseAdapter{
         AppInfo appInfo;
         if(i<(UserAppInfos.size() + 1)){
             appInfo = UserAppInfos.get(i-1);
-        }else{
+        }else{t
             appInfo = SystemAppInfos.get(i - UserAppInfos.size() - 2);
         }
         ViewHolder viewHolder =null;
@@ -83,7 +83,7 @@ public class AppManagerAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) view.getTag();
         }else {
             viewHolder = new ViewHolder();
-            view= View.inflate(context,R.layout.item_appmanager_list,null);
+            view = View.inflate(context, R.layout.item_appmanager_lis,null);
             viewHolder.mAppIconImgv = (ImageView) view
                     .findViewById(R.id.imgv_appicon);
             viewHolder.mAppLocationTV = (TextView) view
