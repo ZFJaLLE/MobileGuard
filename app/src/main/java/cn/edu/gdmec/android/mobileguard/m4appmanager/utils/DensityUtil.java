@@ -1,34 +1,33 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
-
 import android.content.Context;
 
 /**
- * Created by Administrator on 2017/11/7.
- */
-
-
-import android.content.Context;
-
-/**
- * Created by Administrator on 2017/11/7.
+ * Created by Personal on 2017/11/12.
  */
 
 public class DensityUtil {
+    /**
+     * dip转换像素px
+     */
+
     public static int dip2px(Context context, float dpValue){
         try {
             final float scale = context.getResources().getDisplayMetrics().density;
             return (int) (dpValue * scale + 0.5f);
-        }catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
         return (int) dpValue;
     }
 
-    public  static int px2dip(Context context, float pxValue){
-        try {
+    /**
+     * 像素px转换dip
+     */
+    public static int px2dip(Context context, float pxValue){
+        try{
             final float scale = context.getResources().getDisplayMetrics().density;
-            return (int) (pxValue / scale + 0.5f);
+            return (int) (pxValue / scale +0.5f);
         }catch (Exception e){
             e.printStackTrace();
         }

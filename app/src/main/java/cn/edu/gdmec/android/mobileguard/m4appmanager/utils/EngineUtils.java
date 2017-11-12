@@ -11,31 +11,44 @@ import android.widget.Toast;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 
 /**
- * Created by Administrator on 2017/11/7.
+ * Created by Personal on 2017/11/12.
  */
 
 public class EngineUtils {
-    public static void shareApplication(Context context, AppInfo appInfo) {
+    /**
+     * 分享应用
+     */
+    public static void shareApplication(Context context, AppInfo appInfo){
         Intent intent = new Intent("android.intent.action.SEND");
         intent.addCategory("android.intent.category.DEFAULT");
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, "推荐您用一款软件,名称叫:" + appInfo.appName
-                + "下载路径:https://play.google.com/store/apps/details?id="
-                + appInfo.packageName);
+        intent.putExtra(Intent.EXTRA_TEXT,
+                "推荐您使用一款软件，名称叫："+ appInfo.appName
+                        + "下载路径：https://play.google.com/store/apps/details?id="
+                        + appInfo.packageName);
         context.startActivity(intent);
     }
 
-    public static void startApplication(Context context, AppInfo appInfo) {
+    /**
+     * 开启应用程序
+     */
+    public static void startApplication(Context context, AppInfo appInfo){
+        //打开这个应用程序的入口Activity
         PackageManager pm = context.getPackageManager();
         Intent intent = pm.getLaunchIntentForPackage(appInfo.packageName);
-        if (intent != null) {
+        if (intent != null){
             context.startActivity(intent);
-        } else {
-            Toast.makeText(context, "该应用没有启动界面", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "该应用没有启动画面", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public static void SettingAppDetail(Context context, AppInfo appInfo) {
+    /**
+     * 开启应用设置界面
+     * @param context
+     * @param appInfo
+     */
+    public static void SettingAppDetail(Context context, AppInfo appInfo){
         Intent intent = new Intent();
         intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
@@ -43,35 +56,43 @@ public class EngineUtils {
         context.startActivity(intent);
     }
 
-    public static void uninstallApplication(Context context,AppInfo appInfo){
-        if(appInfo.isUserApp){
+    /**
+     * 卸载应用
+     */
+    public static void uninstallApplication(Context context, AppInfo appInfo){
+        if (appInfo.isUserApp){
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_DELETE);
-            intent.setData(Uri.parse("package:"+appInfo.packageName));
+            intent.setData(Uri.parse("package:" + appInfo.packageName));
             context.startActivity(intent);
-        }else{
-            Toast.makeText(context,"系统应用无法卸载",Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(context, "系统应用无法卸载", Toast.LENGTH_SHORT).show();
         }
     }
-    //关于应用信息
-    public static void AboutAppData(Context context,AppInfo appInfo){
+
+    /**
+     * 点击『关于』可以弹出一个对话框，显示每一个app的版本号，安装时间，apk证书签署者信息和权限申请信息
+     */
+    public static void showAboutDialog(Context context, AppInfo appInfo){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(appInfo.appName);
-        builder.setMessage(
-                "Version:"+"\n"+appInfo.appVersion+"\n\n"+
-                       "Install time:"+"\n"+appInfo.inStalldate+"\n\n"+
-                        "Certificate issuer:"+"\n"+appInfo.certMsg+"\n\n"+
-                       "Permission:"+"\n"+appInfo.Permissions
-        );
-        builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+        builder.setTitle("MobileGuard");	    //设置对话框标题
+        builder.setMessage("Version："+appInfo.appVersion+"\nInstall time："+appInfo.installTime
+                +"\nCertificate issuer："+appInfo.certificateIssuer
+                +"\nPermissions："+appInfo.appPermissions);
+
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case AlertDialog.BUTTON_POSITIVE:// "确认"按钮退出程序
+
+                        break;
+                }
             }
         });
-        builder.show();
+        AlertDialog dialog = builder.create();	//创建对话框
+        dialog.show();
+
     }
-    //end
 }
-
-
