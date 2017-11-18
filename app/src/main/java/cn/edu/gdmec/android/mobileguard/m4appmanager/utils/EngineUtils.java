@@ -4,9 +4,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 
@@ -94,5 +97,27 @@ public class EngineUtils {
         AlertDialog dialog = builder.create();	//创建对话框
         dialog.show();
 
+    }
+
+    /**
+     * 点击『活动』可以弹出一个对话框，显示所有活动
+     */
+    public static void ActivityAppDetail(Context context, AppInfo appInfo){
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(appInfo.packageName,PackageManager.GET_ACTIVITIES);
+
+            AlertDialog builder = new AlertDialog.Builder(context).setTitle(appInfo.appName).
+                    setMessage(appInfo.appName+"\n"+"Activities"+"\n"+
+                    Arrays.toString(packageInfo.activities))
+                    .setNegativeButton("返回",new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
