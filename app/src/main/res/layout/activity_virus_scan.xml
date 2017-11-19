@@ -15,6 +15,13 @@
             android:layout_centerInParent="true"
             android:background="@drawable/virusscan_icon"/>
         <TextView
+           android:id="@+id/tv_dbvarsion"
+            style="@style/textview16sp"
+            android:layout_above="@+id/tv_lastscantime"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:text="病毒最新版本"/>
+        <TextView
             android:id="@+id/tv_lastscantime"
             style="@style/textview16sp"
             android:layout_alignParentBottom="true"
@@ -43,7 +50,7 @@
             />
         <TextView
             style = "@style/textview14sp"
-            android:layot_below = "@+id/tv_allscan"
+            android:layout_below = "@+id/tv_allscan"
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/imgv_quickscan"
             android:layout_marginTop="10dp"
