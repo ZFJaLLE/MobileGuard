@@ -146,10 +146,10 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
     }
     private  void cleanAll(){
         //清除全部缓存 利用Android系统的一个漏洞，freeStarageAndNotify
-        //然而android6之后 ，这个漏洞就被封了 ，完全无效
-        Method[] methods= PackageManager.class.getMethods();
-        for (Method method : methods){
-            if("freeStorageAndNotify".equals(method.getName())){
+        //然而android6之后 ，这个漏洞就被封了 ，完全无效);
+     Method[] methods  = PackageManager.class.getMethods();
+        for (Method method:methods){
+            if ("freeStorageAndNotify".equals(method.getName())){
                 try{
                     method.invoke(pm,"",Integer.MAX_VALUE,new ClearCacheObserve());
                 }catch (Exception e){
@@ -158,6 +158,6 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
                 return;
             }
         }
-        Toast.makeText(this,"清理完毕" ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"请理完毕",Toast.LENGTH_SHORT).show();
     }
 }
