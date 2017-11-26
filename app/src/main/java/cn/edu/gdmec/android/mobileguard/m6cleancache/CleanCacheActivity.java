@@ -23,29 +23,31 @@ import java.util.Random;
 import cn.edu.gdmec.android.mobileguard.R;
 
 public class CleanCacheActivity extends AppCompatActivity implements View.OnClickListener {
-    protected static final  int CLEANNING = 100;
-    protected static final int CLEAN_FINISH =10;
+    protected static final int CLEANNING = 100;
+    protected static final int CLEAN_FINISH = 10;
     private AnimationDrawable animation;
     private long cacheMemory;
     private TextView mMemoryTV;
     private TextView mMemoryUnitTV;
     private PackageManager pm;
     private FrameLayout mCleanCacheFL;
-    private  FrameLayout mFinishiCleanFL;
+    private FrameLayout mFinishCleanFL;
     private TextView mSizeTV;
+
     private Handler mHandler = new Handler(){
-        public  void handlerMessage(android.os.Message msg){
+        public void handleMessage(android.os.Message msg){
             switch (msg.what){
                 case CLEANNING:
                     long memory = (Long) msg.obj;
                     formatMemory(memory);
-                    if (memory==cacheMemory){
+                    if (memory == cacheMemory){
                         animation.stop();
                         mCleanCacheFL.setVisibility(View.GONE);
-                        mFinishiCleanFL.setVisibility(View.VISIBLE);
-                        mSizeTV.setText("成功清理"+ Formatter.formatFileSize(CleanCacheActivity.this,cacheMemory));
+                        mFinishCleanFL.setVisibility(View.VISIBLE);
+                        mSizeTV.setText("成功清理:"+
+                                Formatter.formatFileSize(CleanCacheActivity.this,cacheMemory));
                     }
-                break;
+                    break;
             }
         };
     };
@@ -57,77 +59,74 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         initView();
         pm = getPackageManager();
         Intent intent = getIntent();
-        cacheMemory = intent.getLongExtra("cacheMemory" , 0);
+        cacheMemory = intent.getLongExtra("cacheMemory",0);
         initData();
     }
-    /**
-     * 初始化数值
-     */
-    private  void initData(){
+
+
+    private void initData() {
         cleanAll();
         new Thread(){
-            public void run(){
+            @Override
+            public void run() {
                 long memory = 0;
-                while(memory<cacheMemory){
-                    try{
+                while (memory<cacheMemory){
+                    try {
                         Thread.sleep(300);
-                    }catch (InterruptedException e ){
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     Random rand = new Random();
-                    int i =rand.nextInt();
+                    int i = rand.nextInt();
                     i = rand.nextInt(1024);
-                    memory+=10024*i;
+                    memory  += 1024*i;
                     if (memory>cacheMemory){
-                        memory= cacheMemory;
+                        memory = cacheMemory;
                     }
                     Message message = Message.obtain();
-                    message.what  = CLEANNING;
+                    message.what = CLEANNING;
                     message.obj = memory;
                     mHandler.sendMessageDelayed(message,200);
                 }
             };
         }.start();
     }
-    private  void  formatMemory(long memory){
-        String cacheMemoryStr = Formatter.formatFileSize(this, memory);
+
+    private void formatMemory(long memory){
+        String cacheMemoryStr = Formatter.formatFileSize(this,memory);
         String memoryStr;
         String memoryUnit;
-        //根据大小判定单位
         if (memory>900){
-            //大于900则单位俩位
             memoryStr = cacheMemoryStr.substring(0,cacheMemoryStr.length()-2);
             memoryUnit = cacheMemoryStr.substring(cacheMemoryStr.length()-2,cacheMemoryStr.length());
-
         }else{
-            // 单位就一位
             memoryStr = cacheMemoryStr.substring(0,cacheMemoryStr.length()-1);
             memoryUnit = cacheMemoryStr.substring(cacheMemoryStr.length()-1,cacheMemoryStr.length());
-
-
         }
         mMemoryTV.setText(memoryStr);
         mMemoryUnitTV.setText(memoryUnit);
-
     }
-    private  void initView(){
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.rose_red));
+
+    private void initView(){
+        findViewById(R.id.rl_titlebar).setBackgroundColor(
+                getResources().getColor(R.color.rose_red));
         ((TextView) findViewById(R.id.tv_title)).setText("缓存清理");
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
-        animation= (AnimationDrawable) findViewById(R.id.imgv_trashbin_cacheclean).getBackground();
+        animation = (AnimationDrawable) findViewById(R.id.imgv_trashbin_cacheclean).getBackground();
         animation.setOneShot(false);
         animation.start();
-        mMemoryUnitTV = (TextView) findViewById(R.id.tv_cleancache_memoryunit);
         mMemoryTV = (TextView) findViewById(R.id.tv_cleancache_memory);
-        mCleanCacheFL  = (FrameLayout) findViewById(R.id.fl_cleanchche);
-        mFinishiCleanFL  = (FrameLayout) findViewById(R.id.fl_finishclean);
-        mSizeTV  =  (TextView) findViewById(R.id.tv_cleanmemorysize);
+        mMemoryUnitTV = (TextView) findViewById(R.id.tv_cleancache_memoryunit);
+        mCleanCacheFL = (FrameLayout) findViewById(R.id.fl_cleancache);
+        mFinishCleanFL = (FrameLayout) findViewById(R.id.fl_finishclean);
+        mSizeTV = (TextView) findViewById(R.id.tv_cleanmemorysize);
         findViewById(R.id.btn_finish_cleancache).setOnClickListener(this);
 
     }
-    public  void onClick(View view){
+    @Override
+    public void onClick(View view) {
         switch (view.getId()){
             case R.id.imgv_leftbtn:
                 finish();
@@ -137,27 +136,26 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
-    class ClearCacheObserve extends
+    class ClearCacheObserver extends
             android.content.pm.IPackageDataObserver.Stub{
+        @Override
         public void onRemoveCompleted(final String packageName,
                                       final boolean succeeded){
 
         }
     }
-    private  void cleanAll(){
-        //清除全部缓存 利用Android系统的一个漏洞，freeStarageAndNotify
-        //然而android6之后 ，这个漏洞就被封了 ，完全无效);
-     Method[] methods  = PackageManager.class.getMethods();
+    private void cleanAll(){
+        Method[] methods = PackageManager.class.getMethods();
         for (Method method:methods){
             if ("freeStorageAndNotify".equals(method.getName())){
-                try{
-                    method.invoke(pm,"",Integer.MAX_VALUE,new ClearCacheObserve());
-                }catch (Exception e){
+                try {
+                    method.invoke(pm,"",Integer.MAX_VALUE,new ClearCacheObserver());
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 return;
             }
         }
-        Toast.makeText(this,"请理完毕",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"清理完毕",Toast.LENGTH_SHORT).show();
     }
 }
