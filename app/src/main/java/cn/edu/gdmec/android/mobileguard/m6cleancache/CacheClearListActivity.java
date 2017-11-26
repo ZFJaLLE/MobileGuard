@@ -186,7 +186,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                 break;
         }
     }
-    protected void onDestory(){
+    protected void onDestroy(){
         super.onDestroy();
         animation.stop();
         if (thread!= null){
