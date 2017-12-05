@@ -43,12 +43,12 @@ public class OperatorSetActivity extends AppCompatActivity implements View.OnCli
         SharedPreferences.Editor edit = msp.edit();
         switch(v.getId()){
             case R.id.imgv_leftbtn:
-                edit.putBoolean("issert_operator",false);
+                edit.putBoolean("isset_operator",false);
                 finish();
                 break;
             case  R.id.btn_operator_finish:
                 edit.putInt("operator",mSelectSP.getSelectedItemPosition()+1);
-                edit.putBoolean("issert_operator",true);
+                edit.putBoolean("isset_operator",true);
                 edit.commit();
                 startActivity(new Intent(this,TrafficMonitoringActivity.class));
                 finish();

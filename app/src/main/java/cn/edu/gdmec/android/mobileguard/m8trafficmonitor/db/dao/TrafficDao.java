@@ -32,7 +32,7 @@ public class TrafficDao {
     public  long getMoblieGPRS(String dataString){
         SQLiteDatabase db = helper.getReadableDatabase();
         long gprs = 0;
-        Cursor cursor  = db.rawQuery("select gprs form traffic where date=?",
+        Cursor cursor  = db.rawQuery("select gprs from traffic where date=?",
                new String[]{"datetime("+dataString+")"} );
         if (cursor.moveToNext()){
             String gprsStr = cursor.getString(0);
