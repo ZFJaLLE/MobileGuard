@@ -114,7 +114,9 @@
             android:exported="true" />
 
         <activity android:name=".m8trafficmonitor.OperatorSetActivity" />
-        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"></activity>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity" />
+        <activity android:name=".m9advancetools.AdvancedToolsActivity" />
+        <activity android:name=".m9advancetools.NumBelongtoActivity"/>
     </application>
 
 </manifest>
