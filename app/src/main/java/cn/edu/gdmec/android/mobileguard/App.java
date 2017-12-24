@@ -13,6 +13,8 @@ import android.util.Log;
  */
 
 public class App extends Application {
+    public static final String APPLOCK_ACTION = "cn.edu.gdmec.android.moblieguard.m9advancetools.applock";
+    public static final String APPLOCK_CONTENT_URI = "content://cn.edu.gdmec.android.moblieguard.m9advancetools.applock";
     public void onCreate(){
         super.onCreate();
         correctSIM();
