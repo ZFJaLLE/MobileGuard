@@ -32,22 +32,22 @@ public class SplashActivity extends AppCompatActivity {
                     new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),
                     MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS);
         }
-//        VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
-//            @Override
-//            public void afterDownload(String filename) {
-//                MyUtils.installApk(SpalshActivity.this,filename);
-//            }
-//        };
-//        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SpalshActivity.this,downloadCallback,HomeActivity.class);
-//        new Thread(){
-//
-//            @Override
-//            public void run() {
-//                versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/updateinfo.html");
-//            }
-//        }.start();
-        startActivity(new Intent(this, HomeActivity.class));
-        finish();
+        VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
+            @Override
+           public void afterDownload(String filename) {
+                MyUtils.installApk(SplashActivity.this,filename);
+            }
+        };
+        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SplashActivity.this,downloadCallback,HomeActivity.class);
+        new Thread(){
+
+            @Override
+            public void run() {
+                versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/updateinfo.html");
+            }
+       }.start();
+        /*startActivity(new Intent(this, HomeActivity.class));
+        finish();*/
     }
     private boolean hasPermission(){
         AppOpsManager appOps = (AppOpsManager) getSystemService(Context.APP_OPS_SERVICE);
